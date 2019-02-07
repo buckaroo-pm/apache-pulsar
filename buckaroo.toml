@@ -1,0 +1,69 @@
+targets = [ "//pulsar-client-cpp:pulsar-client-cpp" ]
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-predef"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-asio"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-circular_buffer"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-any"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-accumulators"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-format"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-filesystem"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-iostreams"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-xpressive"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-dynamic_bitset"
+version = "1.68.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/protobuf"
+version = "2.6.1"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/open-source-parsers-jsoncpp"
+version = "branch=master"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/madler-zlib"
+version = ">=1.2.10"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/freetype2"
+version = ">=2.9.1"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/openssl"
+version = "*"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/lz4"
+version = "*"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-curl"
+version = "*"

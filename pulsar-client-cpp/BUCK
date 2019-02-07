@@ -1,0 +1,48 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+load('//:extract.bzl', 'extract')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps', 'buckaroo_cell')
+
+protobuf = buckaroo_cell('github.com/buckaroo-pm/protobuf')
+
+protoc = protobuf + '//:protoc'
+
+# Call protoc to generate our C++ files
+genrule(
+  name = 'pulsar-api-cpp',
+  out = 'out',
+  cmd = ' && '.join([
+    'cd $TMP',
+    'mkdir -p $OUT',
+    '$(exe ' + protoc + ') $(location //pulsar-common:pulsar-api-proto)/src/main/proto/PulsarApi.proto ' + \
+      '--proto_path=$(location //pulsar-common:pulsar-api-proto)/src/main/proto --cpp_out=$OUT ',
+  ]),
+)
+
+pulsar_pb_h = extract(':pulsar-api-cpp', 'PulsarApi.pb.h')
+
+cxx_library(
+  name = 'pulsar-client-cpp',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('include', '**/*.h'),
+  ]),
+  headers = dict(
+    subdir_glob([
+      ('', 'lib/**/*.hpp'),
+      ('', 'lib/**/*.h'),
+      ('', 'include/**/*.h'),
+    ]).items() + [
+      ('PulsarApi.pb.h', pulsar_pb_h),
+      ('lib/PulsarApi.pb.h', pulsar_pb_h),
+    ]
+  ),
+  srcs = glob([
+    'lib/**/*.cc',
+  ]) + [
+    extract(':pulsar-api-cpp', 'PulsarApi.pb.cc'),
+  ],
+  deps = buckaroo_deps(),
+  visibility = [
+    'PUBLIC',
+  ],
+)

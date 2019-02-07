@@ -1,0 +1,9 @@
+filegroup(
+  name = 'pulsar-api-proto',
+  srcs = [
+    'src/main/proto/PulsarApi.proto'
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

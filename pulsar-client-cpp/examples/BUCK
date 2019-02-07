@@ -1,0 +1,9 @@
+cxx_binary(
+  name = 'consumer',
+  srcs = [
+    'SampleConsumer.cc',
+  ],
+  deps = [
+    '//pulsar-client-cpp:pulsar-client-cpp',
+  ],
+)
