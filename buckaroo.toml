@@ -65,5 +65,5 @@ package = "github.com/buckaroo-pm/lz4"
 version = "*"
 
 [[dependency]]
-package = "github.com/buckaroo-pm/pkg-config-curl"
+package = "github.com/buckaroo-pm/curl"
 version = "*"
